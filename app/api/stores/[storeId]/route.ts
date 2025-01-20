@@ -10,12 +10,13 @@ export async function PATCH(
     try {
         const { userId } = auth();
         const body = await req.json();
-
+        
+        const { name } = body;
+        
         if (!userId) {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
-        const { name } = body;
         if (!name) {
             return new NextResponse("Name is required", { status: 400 });
         }

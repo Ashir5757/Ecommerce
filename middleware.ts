@@ -1,6 +1,8 @@
-import { withClerkMiddleware } from "@clerk/nextjs/server";
+import { authMiddleware } from "@clerk/nextjs/server";
 
-export default withClerkMiddleware();
+export default authMiddleware({
+  publicRoutes: ["/api/:path*"]
+});
 
 export const config = {
   matcher: [
